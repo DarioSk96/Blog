@@ -5,22 +5,26 @@ body {
 h1 {
     padding-bottom:9px;
     margin-bottom:20px;
-    border-bottom:1px solid #eee;
+    border-bottom:1px solid #ef9083;
 }
 
 .sidebar {
-    position:fixed;
-    top:51px;
-    bottom:0;
-    left:0;
-    z-index:1000;
-    padding:20 px 0;
-    overflow-x:hidden;
-    overflow-y:auto;
-    border-right: 1px solid #eee;
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 20 px 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-right: 1px solid #ef9083;
 }
 
-.sidebar .nav {
+.sidebar .nav{
+    margin-bottom: 20 px;
+}
+
+.sidebar .nav-item {
     width:100%;
 }
 

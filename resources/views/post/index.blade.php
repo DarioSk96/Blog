@@ -11,15 +11,19 @@
 
     <div class="row">
     <div class="col-sm-8 blog-main">
+    @if($posts)
+    @foreach($posts)
     <div class="blog-post">
-    <h2 class="blog-post-title">Posts One</h2>
-    <p class="blog-post-meta"><small><i>December 23,2013 by<a href="#">Dario</a><i></small></p>
+    <h2 class="blog-post-title">{{$post->title}}</h2>
+    <p class="blog-post-meta"><small><i>{{ $post->created_at}} by<a href="#">{{$post->author}}</a><i></small></p>
 
-    <p>Tekst članka...<a href="#">Kliknite za više</a></p>
+    <p>{{$post->description}}<a href="#">Kliknite za više</a></p>
     <blockquote>
-        <p>Jos teksta...<a href="" class="btn btn-primary btn-sm">Learn more</a></p>
+        <a href="{{route('post.detail', ['id' => $post->id]}}" class="btn btn-primary btn-sm">See more</a></p>
     </blockquote>
     </div>
+    @endif
+    @endforeach
 
     <div class="blog-post">
     <h2 class="blog-post-title">Posts Two</h2>
@@ -30,6 +34,7 @@
         <p>Jos teksta...<a href="" class="btn btn-primary btn-sm">Learn more</a></p>
     </blockquote>
     </div>
+    
 
     <nav class="blog-pagination">
         <a class="btn btn-outline-primary" href="#">Older</a>

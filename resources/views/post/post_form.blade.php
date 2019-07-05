@@ -28,6 +28,6 @@
     </form>
     </div>
 </main>
-</div>
+    </div>
 </div>
 @endsection

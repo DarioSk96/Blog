@@ -50,7 +50,7 @@
                     <th> {{$loop -> iteration }}</th>
                     <td> {{$post -> title }}</td>
                     <td> {{$post-> name}}</td>
-                    <td> <a href="">View More</a></td>
+                    <td> <a href="{{ route('post.detail', ['id' =>$post->id])}}">View More</a></td>
                     <td> {{ Carbon\Carbon::parse($post->created_at)->format('d.m.Y. h:i:s')}}</td>
                 </tr>
                 @endforeach

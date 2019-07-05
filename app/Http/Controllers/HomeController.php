@@ -47,4 +47,35 @@ class HomeController extends Controller
         ));
         return redirect()->route('home')->with('success', 'Post has been created');
     }
+
+    public function getPost($id){
+        $post = Post::find($id);
+        return view('post/post_detail', ['post' => $post]);
+    }
+
+    public function editPost($id){
+        $post = Post::find($id);
+        return view('post/post_edit', ['post' =>$post]);
+    }
+
+    public function updatePost(Request $request, $id){
+        $post = Post::find($id);
+        $post->title = $request->title;
+        $post->description = $request->description;
+        $post->save();
+
+        return redirect()->route('home')->with('success', 'post has been updated successfuly');
+    }
+
+    public function deletePost($id){
+        $post = Post::find($id);
+        $post->delete();
+        return redirect()->route('home')->with('success', 'Post has been deleted successfuly!');
+    }
+
+    public function welcome()
+    {
+        $posts = Post::paginate(10);
+        return view('post.index', ['posts' => $posts]);
+    }
 }
