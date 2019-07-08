@@ -4,11 +4,11 @@
 <div class="container-fluid">
 <div class="row">
     <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
-            <ul class="nav nav-pills flex-column">
-            <li class="nav-item">
-                <a class="nav-link active" href="#">Post<span class="sr-only">(current)</span></a>
-            </li>
-            </ul>
+        <ul class="nav nav-pills flex-column">
+        <li class="nav-item">
+            <a class="nav-link active" href="#">Post<span class="sr-only">(current)</span></a>
+        </li>
+        </ul>
 
         <ul class="nav nav-pills flex-column">
             <li class="nav-item">
@@ -18,9 +18,9 @@
     </nav>
 
     <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
-        <h1> Welcome {{Auth::user()-> name}} </h1>
-        <h2>Posts
-            <a href="{{ route('post.form')}}">
+        <h2> Welcome {{Auth::user()-> name}} </h2>
+        <h1> Posts
+            <a href="{{ route('post.form') }}">
             <button type="button" class="btn btn-primary btn-sm">Create Post</button>
             </a>
         </h1>
@@ -49,16 +49,15 @@
                 <tr>
                     <th> {{$loop -> iteration }}</th>
                     <td> {{$post -> title }}</td>
-                    <td> {{$post-> name}}</td>
-                    <td> <a href="{{ route('post.detail', ['id' =>$post->id])}}">View More</a></td>
-                    <td> {{ Carbon\Carbon::parse($post->created_at)->format('d.m.Y. h:i:s')}}</td>
+                    <td> {{$post -> name }}</td>
+                    <td> <a href="{{ route('post.detail', ['id' =>$post->id]) }}">View More</a> </td>
+                    <td> {{ Carbon\Carbon::parse($post->created_at)->format('d.m.Y h:i:s')}}</td>
                 </tr>
                 @endforeach
             @else
                 <p class="text-center text-primary">No Posts created yet!</p>
             @endif
             </tbody>
-                
     </main>
 </div>
 </div>

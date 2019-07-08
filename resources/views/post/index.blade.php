@@ -12,44 +12,34 @@
     <div class="row">
     <div class="col-sm-8 blog-main">
     @if($posts)
-    @foreach($posts)
+    @foreach($posts as $post)
     <div class="blog-post">
     <h2 class="blog-post-title">{{$post->title}}</h2>
-    <p class="blog-post-meta"><small><i>{{ $post->created_at}} by<a href="#">{{$post->author}}</a><i></small></p>
+    <p class="blog-post-meta"><small><i>{{ Carbon\Carbon::parse($post->created_at)->format('d-m-Y')}} by<a href="#">{{$post->name}}</a><i></small></p>
 
-    <p>{{$post->description}}<a href="#">Kliknite za više</a></p>
+    <p>{{ \Illuminate\Support\Str::words($post->description, 30, '...')}}<a href="#">Kliknite za više</a></p>
     <blockquote>
-        <a href="{{route('post.detail', ['id' => $post->id]}}" class="btn btn-primary btn-sm">See more</a></p>
-    </blockquote>
-    </div>
-    @endif
-    @endforeach
-
-    <div class="blog-post">
-    <h2 class="blog-post-title">Posts Two</h2>
-    <p class="blog-post-meta"><small><i>December 23,2013 by<a href="#">Mario</a><i></small></p>
-
-    <p>Tekst članka...<a href="#">Kliknite za više</a></p>
-    <blockquote>
-        <p>Jos teksta...<a href="" class="btn btn-primary btn-sm">Learn more</a></p>
+        <a href="{{route('post.read', ['id' => $post->id])}}" class="btn btn-primary btn-sm">See more</a></p>
     </blockquote>
     </div>
     
-
+    @endforeach
+    @endif
     <nav class="blog-pagination">
-        <a class="btn btn-outline-primary" href="#">Older</a>
-        <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
+        {{ $posts -> links()}}
     </nav>
+
+
 
     <aside class="col-sm-3 ml-sm-auto blog-sidebar">
         <div class="sidebar-module">
         <h4>Latest Posts</h4>
+        @foreach($archives as $archive)
         <ol class="list-unstyled">
-        <li><a href="#">March 2019</a>
-        <li><a href="#">February 2019</a>
-        <li><a href="#">Januray 2019</a>
+            <li><a href="{{route ('post.read', ['id' => $post->id])}}">{{ \Illuminate\Support\Str::words($archive->title, 6, '...')}}</a>
         </ol>
         </div>
+        @endforeach
 
     <div class="list-unstyled">
     <h4>Elsewhere</h4>
